@@ -1,12 +1,15 @@
 import streamlit as st
+import os
 import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
 import json
 import io
 
-import os
+# ✅ এই লাইনটি অবশ্যই সবচেয়ে প্রথমে
+st.set_page_config(page_title="Google Sheet Cleaner", layout="wide")
 
+# ✅ ZIP ডাউনলোড বাটন (এই লাইনের ঠিক নিচে)
 if os.path.exists("google-sheet-cleaner.zip"):
     with open("google-sheet-cleaner.zip", "rb") as f:
         zip_data = f.read()
@@ -19,7 +22,6 @@ if os.path.exists("google-sheet-cleaner.zip"):
     )
 else:
     st.warning("⚠️ ZIP file not found. Please upload `google-sheet-cleaner.zip` to your repository.")
-
 
 
 st.set_page_config(page_title="Google Sheet Cleaner", layout="wide")

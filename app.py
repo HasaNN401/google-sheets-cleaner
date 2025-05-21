@@ -1,21 +1,26 @@
-with open("google-sheet-cleaner.zip", "rb") as f:
-    zip_data = f.read()
-
-st.download_button(
-    label="📦 Download Full Source Code (ZIP)",
-    data=zip_data,
-    file_name="google-sheet-cleaner.zip",
-    mime="application/zip"
-)
-
-
-
 import streamlit as st
 import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
 import json
 import io
+
+import os
+
+if os.path.exists("google-sheet-cleaner.zip"):
+    with open("google-sheet-cleaner.zip", "rb") as f:
+        zip_data = f.read()
+
+    st.download_button(
+        label="📦 Download Full Source Code (ZIP)",
+        data=zip_data,
+        file_name="google-sheet-cleaner.zip",
+        mime="application/zip"
+    )
+else:
+    st.warning("⚠️ ZIP file not found. Please upload `google-sheet-cleaner.zip` to your repository.")
+
+
 
 st.set_page_config(page_title="Google Sheet Cleaner", layout="wide")
 
